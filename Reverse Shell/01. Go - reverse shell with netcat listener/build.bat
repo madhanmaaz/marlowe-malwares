@@ -1,0 +1,1 @@
+go build --ldflags "-linkmode=external -H=windowsgui -s -w -extldflags rsrc.syso" -o dist\notepad.exe main.go
