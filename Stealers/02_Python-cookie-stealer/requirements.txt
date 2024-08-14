@@ -1,0 +1,5 @@
+Flask==3.0.3
+pyinstaller==6.9.0
+pypiwin32
+pycryptodome
+requests
